@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cancel</title>
+        <!-- Latest compiled and minified CSS -->
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            html , body{
+                height: 100%;
+                font-family:sans-serif;
+                color: #666;
+                background: transparent;
+                /* overflow: hidden; */
+            }
+
+            .wrapper{
+				border-radius: 0 0 8px 8px;
+				display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                height: 98%;
+                z-index: 50;
+                position: relative;
+				background: #1C1C1F !important;
+                /* overflow: hidden; */
+                /* border: 1px solid white; */
+            }
+            .wrapper label{
+				color: #FFF;
+				float: right;
+				padding: 0px 15px;
+				font-size: 14px;
+				line-height: 52px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="wrapper">
+                <label id="cancel">Cancel</label>
+      </div>
+	  
+		<script >
+		//(function() {
+			//Retrieve remote browser window
+			const {BrowserWindow} = require('electron').remote;
+			
+			
+			function init(){
+				document.getElementById("cancel").addEventListener("click", (e) => {
+					//var win = BrowserWindow.getFocusedWindow();
+					var win = BrowserWindow.getAllWindows();
+					console.log(win[0].getTitle());
+					console.log(win[1].getTitle());
+					console.log(win[2].getTitle());
+                                               
+                   var win_title = [];
+                   win_title.push(win[0].getTitle().indexOf('pdf')>0?'Pdf':win[0].getTitle());
+                   win_title.push(win[1].getTitle().indexOf('pdf')>0?'Pdf':win[1].getTitle());
+                   win_title.push(win[2].getTitle().indexOf('pdf')>0?'Pdf':win[2].getTitle());
+                   console.log(win_title);
+				   console.log(win_title.indexOf('Pdf'));
+				   console.log(win_title.indexOf('Cancel'))
+				   win[win_title.indexOf('Pdf')].close();
+                   win[win_title.indexOf('Cancel')].close();
+				   
+					//win[1].close();
+					//win[2].close();
+					//win.close();
+				});
+			}
+		
+		//});
+		document.onreadystatechange = () => {
+			if(document.readyState == "complete"){
+				init();
+			}
+		};
+		</script>
+    </body>
+</html>

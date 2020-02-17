@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Index </title>
+        <!-- Latest compiled and minified CSS -->
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            html , body{ 
+                height: 100%;
+                font-family:sans-serif; 
+                color: #666;
+                background: transparent;
+            }
+            .btn{
+                display: inline-block;
+                border-radius: 6px;
+                background-color: #fff;
+                color: #2196f3;
+                height: 32px;
+                line-height: 32px;
+                padding: 0 15px;
+                text-align: center;
+                text-transform: capitalize;
+                border: 1px solid #dedede;
+                z-index: 1;
+                text-decoration: none;
+            }
+
+            .btn:focus , .btn:hover , .btn:active{
+                outline: none; 
+            }
+            
+            .btn-disabled{
+                background: #f2f2f2;
+                color: #999;
+                pointer-events: none;
+            }
+
+            
+            .popupContainer {
+                width:600px;
+                min-height: 300px;
+                /*border:1px solid #dedede;*/
+                margin: 0 auto;
+                padding: 15px;
+                box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+            }
+            .popupHeader h2{
+                font-size: 16px;
+                margin-bottom: 5px;
+                font-weight: normal;
+                color: #333;
+            }
+            .popupHeader p{
+                font-size: 14px;
+            }
+            .tab{
+                margin: 0px;
+                padding: 0px;
+                list-style: none;
+                display: table;
+                margin-top: 15px;
+            }
+            .tab li{
+                display: table-cell;
+                width:1%;
+            }
+            .tab li>a{
+                display: block;
+                padding: 10px;
+                text-align: center;
+                color: #999;
+                text-decoration: none;
+                position: relative;
+            }
+            .tab li>a:after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                left: 0px;
+                bottom: 0px;
+            }
+            .tab li.active>a:after{
+                background-color: #2196f3;
+            }
+            .tab li.active>a{
+                color: #2196f3;
+            }
+            .popupBody{
+                height: 400px;
+                border: 1px solid #dedede;
+                overflow: auto;
+                overflow-x: hidden;
+                padding: 15px;
+            }
+            .popupFooter{
+                padding-top: 15px;
+                text-align: right;
+            }
+            
+            .singleImg , .singleImg >div{
+                height: 100%;
+                width: 100%;
+            }
+            .singleImg >div{
+                margin: 0px;
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 15px;
+                
+                
+            }
+            .singleImg >div .radio ,  .multipleImg >div .radio{
+                position: absolute;
+                opacity: 0;
+                left: 0px;
+                top: 0px;
+                margin: 0px;
+                width:100%;
+                height: 100%;
+                z-index: 2;
+            }
+             .img{
+                width:100%;
+                border: 2px solid transparent;
+                padding: 15px 0px;
+                
+            }
+            .border{
+                border: 1px dashed transparent;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0px;
+                left: 0px;
+                z-index: 0;
+            }
+            
+            .singleImg >div .radio:checked ~ .img , .multipleImg >div .radio:checked ~ .img{
+                border-color:#2196f3;
+            }
+            .singleImg >div .radio:checked ~ .border ,  .multipleImg >div .radio:checked ~ .border{
+                border-color:#999;
+            }
+            
+            .multipleImg{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .multipleImg>div{
+                width:calc(100%/3);
+                margin: 0px;
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 15px;
+            }
+            
+            
+        </style>
+    </head>
+
+    <body>
+        
+            <div class="popupContainer">
+                <div class="popupHeader">
+                    <h2>Share your screen</h2>
+                    <p>web.nynja.net want to share the contents of your screen. Choose what you'd like share.</p>
+                    <ul class="tab">
+                        <li class="active">
+                            <a href="javascript:;" id="entireTab">Your Entire Screen</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="applicationTab">Application Window</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="popupBody">
+                    <div class="singleImg" style="" id="entireTabContainer">
+                        <div>
+                            <input type="radio" class="radio" name="screen"/>
+                            <img src='http://www.extremetech.com/wp-content/uploads/2015/08/TaskView.jpg' class="img">
+                            <div class="border"></div>
+                        </div>
+                    </div>
+                    <div class="multipleImg" id="applicationTabContainer">
+                        <div>
+                            <input type="radio" class="radio" name="screen"/>
+                            <img src='http://www.extremetech.com/wp-content/uploads/2015/08/TaskView.jpg' class="img">
+                            <div class="border"></div>
+                        </div>
+                        <div>
+                            <input type="radio" class="radio" name="screen"/>
+                            <img src='http://www.extremetech.com/wp-content/uploads/2015/08/TaskView.jpg' class="img">
+                            <div class="border"></div>
+                        </div>
+                        <div>
+                            <input type="radio" class="radio" name="screen"/>
+                            <img src='http://www.extremetech.com/wp-content/uploads/2015/08/TaskView.jpg' class="img">
+                            <div class="border"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popupFooter">
+                    <a href="javascript:;" class="btn btn-disabled">Share</a>
+                    <a href="javascript:;" class="btn">Cancel</a>
+                </div>
+            </div>
+
+    <script>
+        var entireTab = document.getElementById("entireTab");
+        var applicationTab = document.getElementById("applicationTab");
+        var entireTabContainer = document.getElementById("entireTabContainer");
+        var applicationTabContainer = document.getElementById("applicationTabContainer");
+        entireTabContainer.style.display = "flex"
+        applicationTabContainer.style.display  = "none";
+        entireTab.onclick = function(){
+            entireTab.parentElement.className = "active"
+            applicationTab.parentElement.className  = "";
+            
+            entireTabContainer.style.display = "flex"
+            applicationTabContainer.style.display  = "none";
+        }
+        applicationTab.onclick = function(){
+            entireTab.parentElement.className = ""
+            applicationTab.parentElement.className  = "active";
+            
+            entireTabContainer.style.display = "none"
+            applicationTabContainer.style.display  = "flex";
+            
+        }
+    </script>
+    </body>
+    
+</html>
