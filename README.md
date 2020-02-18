@@ -1,5 +1,5 @@
 # NYNJA Desktop Application
-=======================
+
 Desktop application for Nynja build in nodejs electron framework
 
 
