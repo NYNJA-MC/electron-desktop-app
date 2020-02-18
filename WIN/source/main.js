@@ -23,10 +23,6 @@ let local_storage = {};
 // const loadURL = 'https://web.staging.nynja.net/dashboard';
 const loadURL = 'https://web.dev.nynja.net/dashboard';
 function createWindow() {
-	//process.env.GOOGLE_API_KEY = "AIzaSyCPbmxHXnF0DbOltt1xfRZSIJ6hKSpHZvE";
-	//process.env.GOOGLE_API_KEY = "AIzaSyCX16OxqGaRTh6tsceFSHfnXSqcH0RPOLA";
-	process.env.GOOGLE_API_KEY = "AIzaSyAkYWAfciFhM35qkDKTFaVst3g2xPpOMcU";
-	
 				console.log('getPath logs',app.getPath('logs'))
 	let exePath = app.getPath('exe').toString();
 	console.log('exePath.indexOf',exePath.lastIndexOf('\\'));
@@ -479,18 +475,12 @@ console.log(display.workArea);
     sendStatusToWindow('version.'+autoUpdater.currentVersion.version);
     // Auto start checking for updates on app startup.
     // autoUpdater.setFeedURL('https://api.github.com/repos/akashsuthar/nyn-pub-test/releases/latest');
-    autoUpdater.setFeedURL({//url:'https://api.github.com/repos/akashsuthar/nyn-aka-test/releases/latest',
-        token:'5e4a74a5e8289226182094d6b3bd45554a3e86af',//GH_TOKEN=5e4a74a5e8289226182094d6b3bd45554a3e86af npm run to push on git
+    autoUpdater.setFeedURL({
+        token:'',
         owner:'NYNJA-MC',
         repo:'electron-desktop-app',
     provider:'github'});
     // sendStatusToWindow({
-    // autoUpdater.setFeedURL({
-    // //     token:'ba0d5fc941fbd1232680ae758fcd88f72ac27f81',
-    //     token:'549ec1ad13c282dca4e3420e26d174c2703b4ca2',
-    //     owner:'akashsuthar',
-    //     repo:'nyn-pub-test',
-    // provider:'github'});
 console.log('-')
     // autoUpdater.autoDownload = false;
 	// autoUpdater.autoRestart = true;
